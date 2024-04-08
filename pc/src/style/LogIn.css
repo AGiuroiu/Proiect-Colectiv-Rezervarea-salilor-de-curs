@@ -116,6 +116,7 @@ body, html {
 logo-container {
   text-align: left;
   margin-bottom: 20px;
+  align-items: flex-start;
 }
 
 .logo {

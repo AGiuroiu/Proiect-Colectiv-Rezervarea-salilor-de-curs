@@ -103,7 +103,7 @@ const LogIn = () => {
                 )}
                 {action !== "Sign up" && (
                     <div className="forgot-password">
-                        Lost Password? <span>Click Here!</span>
+                        Forgot Password? <span>Click Here!</span>
                     </div>
                 )}
                 <div className="submit-container">
