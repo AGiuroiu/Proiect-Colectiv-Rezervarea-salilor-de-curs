@@ -1,0 +1,41 @@
+.register {
+    background-color: #393e46;
+    width: 400px;
+    border-radius: 15px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .register > form input {
+    border-radius: 20px;
+    border: 2px solid lightgrey;
+    color: #1d2129;  /* Set text color */
+    outline: none;
+    margin: 2% 0;
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .register h1 {
+    color: white;
+  }
+  
+  .button_common {
+    background-color: #393e46;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  .logo {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 500px;
+    max-height: 250px;
+  }
+  
