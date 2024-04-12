@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
 import './App.css'; // Asumând că stilurile sunt definite în App.css
-import Logo from './roomranger.png';
+import React, { useEffect } from 'react';
+
 
 // Componenta pentru bara de navigare
 function Navbar() {
   return (
     <div className="navbar">
-    <div className="logo-container">
-         <img src={Logo} alt="Logo" className="logo" /> 
-          </div>      
+      <div className="logo">RoomRanger</div>
       <div className="nav-items">
         <a href="/">Home</a>
         <a href="/map">Map</a>
@@ -24,8 +22,7 @@ function Map() {
   useEffect(() => {
     // Crează un element <script> pentru a încărca Google Maps API
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD3pcEWmYaPqKLCEGeu8fuZ5fFvSVvWeC8
-    &libraries=places`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD3pcEWmYaPqKLCEGeu8fuZ5fFvSVvWeC8&libraries=places`;
     script.async = true;
     script.defer = true;
     script.onload = initializeMap;
@@ -40,20 +37,21 @@ function Map() {
   function initializeMap() {
     // Inițializează harta
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: 45.75643334548602,  lng: 21.228483079011387 },
-      zoom: 12
+      center: { lat: 45.763361655442004,  lng: 21.220691404711896 },
+      zoom: 14
+    
     });
 
     // Adaugă marker
     const marker = new window.google.maps.Marker({
-      position: { lat: 45.75643334548602, lng: 21.228483079011387 },
+      position: { lat: -34.397, lng: 150.644 },
       map: map,
       title: 'Marker'
     });
   }
 
   return (
-    <div id="map" className="map" style={{ width: '100%', height: '400px',  }}></div>
+    <div id="map" className="map" style={{ width: '100%', height: '400px' }}></div>
   );
 }
 
@@ -81,4 +79,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

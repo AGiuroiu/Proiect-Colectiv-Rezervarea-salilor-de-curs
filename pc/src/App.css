@@ -8,18 +8,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #000000;
+  background-color: #f0f0f0;
 }
 
 .nav-items a {
   text-decoration: none;
   margin: 0 10px;
-  color: rgb(255, 255, 255);
+  color: #333;
 }
 
 .map {
-  height: 80vh;
-  border-radius: 5px;
+  height: 60vh;
+  /* Aici ar trebui să adaugi stiluri specifice pentru a integra harta */
 }
 
 .action-buttons {
@@ -37,15 +37,8 @@
   margin: 0 0.5rem;
   border: none;
   border-radius: 5px;
-  background-color: #00ADB5;
+  background-color: #007bff;
   color: white;
 }
 
-logo-container {
-  text-align: left;
-  margin-bottom: 20px;
-  align-items: flex-start;
-}
-.logo {
-  width: 300px; 
-  height: auto; }
+/* ...restul stilurilor... */
