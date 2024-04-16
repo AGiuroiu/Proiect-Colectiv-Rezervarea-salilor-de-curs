@@ -1,6 +1,6 @@
 import React from "react";
+import './style/Main.css'
 
-// Componenta pentru butoanele de la baza paginii
 export function ActionButtons() {
     return (
       <div className="action-buttons">

@@ -118,10 +118,10 @@ body, html {
   align-items: center; 
 }
 .logo-container {
-  margin-right: 20px; /* Spațiu între logo și text */
+  margin-right: 20px; 
 }
 
 .logo {
-  width: 300px; /* Setează lățimea dorită pentru logo */
-  height: auto; /* Asigură aspectul corect al logo-ului, ajustând înălțimea în funcție de lățime */
+  width: 300px; 
+  height: auto; 
 }

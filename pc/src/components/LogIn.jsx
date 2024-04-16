@@ -5,8 +5,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import Logo from "../logo/roomranger.png"; // Importă imaginea logo.png
-
+import Logo from "../logo/roomranger.png"; 
 
 const LogIn = () => {
     const [action, setAction] = useState("Login");
@@ -33,7 +32,7 @@ const LogIn = () => {
             <div className="container2">
                 <div className="header">
                     <div className="logo-container">
-                        <img src={Logo} alt="Logo" className="logo" /> {/* Adaugă logo-ul */}
+                        <img src={Logo} alt="Logo" className="logo" /> 
                     </div>
                 </div>
                 <div className="inputs">

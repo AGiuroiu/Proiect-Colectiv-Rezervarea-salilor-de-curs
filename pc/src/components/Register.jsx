@@ -9,7 +9,6 @@ const Register = ({ toggleAuthMode }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = () => {
-    // Logica de înregistrare aici
     console.log("Registering with:", email, password);
   };
 

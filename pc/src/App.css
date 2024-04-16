@@ -1,6 +1,8 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  background-color: #393E46;
+
 }
 
 .navbar {
@@ -8,18 +10,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f0f0f0;
+  background-color: #000000;
 }
 
 .nav-items a {
   text-decoration: none;
   margin: 0 10px;
-  color: #333;
+  color: rgb(255, 255, 255);
 }
 
 .map {
-  height: 60vh;
-  /* Aici ar trebui să adaugi stiluri specifice pentru a integra harta */
+  height: 80vh;
+  border-radius: 20px;
+
 }
 
 .action-buttons {
@@ -29,16 +32,23 @@
   display: flex;
   justify-content: space-around;
   padding: 1rem;
-  background-color: #f0f0f0;
+  background-color: #393E46;
 }
 
 .search-btn, .filter-btn, .book-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 10rem;
   margin: 0 0.5rem;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #00ADB5;
   color: white;
 }
 
-/* ...restul stilurilor... */
+logo-container {
+  text-align: left;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+.logo {
+  width: 200px; 
+  height: auto; }

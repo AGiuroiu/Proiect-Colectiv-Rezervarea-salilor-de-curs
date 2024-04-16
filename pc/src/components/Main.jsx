@@ -8,7 +8,7 @@ function Main() {
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/login" component={LogIn} /> {/* ruta pentru LogIn.jsx */}
+        <Route path="/login" component={LogIn} />  
       </Switch>
     </Router>
   );
