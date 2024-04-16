@@ -113,11 +113,15 @@ body, html {
   color: #676767;
 }
 
-logo-container {
-  text-align: left;
-  margin-bottom: 20px;
+.header {
+  display: flex;
+  align-items: center; 
+}
+.logo-container {
+  margin-right: 20px; 
 }
 
 .logo {
   width: 300px; 
-  height: auto; }
+  height: auto; 
+}
