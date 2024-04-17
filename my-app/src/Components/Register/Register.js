@@ -4,9 +4,14 @@ import registerstyle from "./Register.module.css";
 import axios from "axios";
 import logo from "../logo.png";
 
+
+
 import { useNavigate, NavLink } from "react-router-dom";
+
 const Register = () => {
   const navigate = useNavigate();
+
+  
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -27,55 +32,67 @@ const Register = () => {
   };
 
   const validateForm = (values) => {
-    const error = {};
+    const errors = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
     if (!values.fname) {
-      error.fname = "First Name is required";
+      errors.fname = "First Name is required";
     }
     if (!values.lname) {
-      error.lname = "Last Name is required";
+      errors.lname = "Last Name is required";
     }
     if (!values.email) {
-      error.email = "Email is required";
+      errors.email = "Email is required";
     } else if (!regex.test(values.email)) {
-      error.email = "This is not a valid email format!";
+      errors.email = "This is not a valid email format!";
     }
     if (!values.password) {
-      error.password = "Password is required";
+      errors.password = "Password is required";
     } else if (values.password.length < 4) {
-      error.password = "Password must be more than 4 characters";
+      errors.password = "Password must be more than 4 characters";
     } else if (values.password.length > 10) {
-      error.password = "Password cannot exceed more than 10 characters";
+      errors.password = "Password cannot exceed more than 10 characters";
     }
     if (!values.cpassword) {
-      error.cpassword = "Confirm Password is required";
+      errors.cpassword = "Confirm Password is required";
     } else if (values.cpassword !== values.password) {
-      error.cpassword = "Confirm password and password should be same";
+      errors.cpassword = "Confirm password and password should be same";
     }
-    return error;
+
+    return errors;
   };
+
+  
   const signupHandler = (e) => {
     e.preventDefault();
-    setFormErrors(validateForm(user));
+    const errors = validateForm(user);
+    setFormErrors(errors);
     setIsSubmit(true);
-    // if (!formErrors) {
-    //   setIsSubmit(true);
-    // }
+  
+    if (Object.keys(errors).length === 0) {
+      axios.post("http://localhost:8000/signup/", user)
+        .then((res) => {
+          alert(res.data.message); // Display a success message (optional)
+          navigate("/login", { replace: true }); // Redirect to login page
+        })
+        .catch((error) => {
+          console.error("Error registering user:", error);
+          // Handle any registration errors here (e.g., display error message)
+        });
+    }
   };
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(user);
-      axios.post("http://localhost:9002/signup/", user).then((res) => {
-        alert(res.data.message);
-        navigate("/login", { replace: true });
-      });
+      // Additional actions after successful form submission
     }
-  }, [formErrors]);
+  }, [formErrors, isSubmit, user]); 
+
   return (
     <>
       <div className={registerstyle.register}>
-      <img src={logo} alt="Logo" className={registerstyle.logo} />
+        <img src={logo} alt="Logo" className={registerstyle.logo} />
         <form>
           <h1>Create your account</h1>
           <input
@@ -132,4 +149,5 @@ const Register = () => {
     </>
   );
 };
+
 export default Register;

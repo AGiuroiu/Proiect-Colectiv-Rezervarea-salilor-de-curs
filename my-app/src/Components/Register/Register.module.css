@@ -38,4 +38,13 @@
     max-width: 500px;
     max-height: 250px;
   }
+
+  .register a {
+    color: #d3c8c5; /* Set the color to your desired value */
+    text-decoration: none; /* Optionally remove underline */
+  }
+  
+  .register a:hover {
+    color: #3f81c4; /* Change color on hover */
+  }
   
