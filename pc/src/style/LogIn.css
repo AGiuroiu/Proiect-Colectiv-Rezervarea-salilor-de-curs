@@ -3,6 +3,8 @@
 body, html {
   height: 100%;
   margin: 0;
+  background: #222831;
+
 }
 
 .container {
@@ -49,6 +51,7 @@ body, html {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  align-items: center;
 }
 
 .input {

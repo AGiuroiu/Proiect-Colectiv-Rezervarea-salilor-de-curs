@@ -5,7 +5,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import Logo from "../logo/roomranger.png"; 
+import Logo from "../images/roomranger.png"; 
 
 const LogIn = () => {
     const [action, setAction] = useState("Login");
