@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import basestyle from "../Base.module.css";
 import registerstyle from "./Register.module.css";
 import axios from "axios";
-import logo from "../logo.png";
+import logo from "../../images/logo.png";
 
 import { useNavigate, NavLink } from "react-router-dom";
 
@@ -69,7 +69,7 @@ const Register = () => {
         .post("http://localhost:8000/signup/", user)
         .then((res) => {
           alert(res.data.message); // Display a success message (optional)
-          navigate("/login", { replace: true }); // Redirect to login page
+          navigate("/", { replace: true }); // Redirect to login page
         })
         .catch((error) => {
           console.error("Error registering user:", error);
@@ -140,7 +140,7 @@ const Register = () => {
             Register
           </button>
         </form>
-        <NavLink to="/login">Already registered? Login</NavLink>
+        <NavLink to="/">Already registered? Login</NavLink>
       </div>
     </>
   );

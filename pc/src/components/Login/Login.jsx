@@ -3,7 +3,7 @@ import basestyle from "../Base.module.css";
 import loginstyle from "./Login.module.css";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
-import logo from "../logo.png";
+import logo from "../../images/logo.png";
 
 const Login = ({ setUserState }) => {
   const navigate = useNavigate();

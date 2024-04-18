@@ -1,19 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Asigură-te că importul este corect
+import "./App.css";
+import Profile from "./components/Profile/Profile";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
-import { Login, Register } from './components';
-
-const App = () => {
+function App() {
+  const [userstate, setUserState] = useState({});
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path='/register' element={<Register />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              userstate && userstate._id ? (
+                <Profile
+                  setUserState={setUserState}
+                  username={userstate.fname}
+                />
+              ) : (
+                <Login setUserState={setUserState} />
+              )
+            }
+          ></Route>
+          <Route
+            path="/login"
+            element={<Login setUserState={setUserState} />}
+          ></Route>
+          <Route path="/signup" element={<Register />}></Route>
+        </Routes>
+      </Router>
+    </div>
   );
-};
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
-export default LogIn.jsx;
+export default App;
