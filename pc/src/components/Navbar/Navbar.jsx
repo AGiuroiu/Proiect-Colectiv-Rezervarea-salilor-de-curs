@@ -1,14 +1,14 @@
 import React from "react";
-// import Logo from "../../images/roomranger.png";
-import "./Navbar.module.css";
+import Logo from "../../images/logo.png";
+import styles from "./Navbar.module.css"; 
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      {/* <div className="logo-container">
-        <img src={Logo} alt="Logo" className="logo" />
-      </div> */}
-      <div className="nav-items">
+    <div className={styles.navbar}> 
+      {<div className={styles["logo-container"]}> 
+        <img src={Logo} alt="Logo" className={styles.logo} /> 
+      </div>}
+      <div className={styles["nav-items"]}> 
         <a href="/">Home</a>
         <a href="/map">Map</a>
         <a href="/about-us">About Us</a>

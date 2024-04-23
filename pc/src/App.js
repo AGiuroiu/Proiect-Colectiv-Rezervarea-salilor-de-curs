@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Map from "./components/Map/Map";
 import Navbar from "./components/Navbar/Navbar";
+import AboutUsPage from "./components/AboutUs/AboutUs";
 
 function App() {
   const [userstate, setUserState] = useState({});
 
-  if (!(userstate && userstate._id)) {
+  if ((userstate && userstate._id)) {
     return (
       <div className="App">
         <Router>
@@ -34,7 +35,9 @@ function App() {
               <Profile setUserState={setUserState} username={userstate.fname} />
             }
           ></Route>
-          <Route path="/" element={<Map />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          
         </Routes>
       </Router>
     </div>

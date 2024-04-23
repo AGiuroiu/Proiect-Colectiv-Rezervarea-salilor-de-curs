@@ -1,10 +1,11 @@
-import "./Map.module.css";
 import React, { useEffect } from "react";
+import "./Map.module.css";
+import { Loader } from "@googlemaps/js-api-loader"
 
 function Map() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD3pcEWmYaPqKLCEGeu8fuZ5fFvSVvWeC8&libraries=places`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`; // Replace YOUR_API_KEY with your actual API key
     script.async = true;
     script.defer = true;
     script.onload = initializeMap;
@@ -21,10 +22,16 @@ function Map() {
       zoom: 14,
     });
 
-    const marker = new window.google.maps.Marker({
-      position: { lat: -34.397, lng: 150.644 },
+    // Add marker on map click
+    map.addListener("click", (event) => {
+      addMarker(event.latLng, map);
+    });
+  }
+
+  function addMarker(location, map) {
+    new window.google.maps.Marker({
+      position: location,
       map: map,
-      title: "Marker",
     });
   }
 

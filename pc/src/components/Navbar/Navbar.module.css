@@ -1,43 +1,38 @@
-.App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #f0f0f0;
-  }
-  
-  .nav-items a {
-    text-decoration: none;
-    margin: 0 10px;
-    color: #333;
-  }
-  
-  .map {
-    height: 60vh;
-  }
-  
-  .action-buttons {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    background-color: #f0f0f0;
-  }
-  
-  .search-btn, .filter-btn, .book-btn {
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-  }
-  
-  
+.navbar {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #000000;
+}
+
+.logo-container {
+  text-align: left;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+}
+
+.nav-items {
+  text-decoration: none;
+  margin: 0 10px;
+  color: rgb(255, 255, 255);
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 10px;
+}
+
+.nav-items a:hover {
+  text-decoration: underline;
+}
