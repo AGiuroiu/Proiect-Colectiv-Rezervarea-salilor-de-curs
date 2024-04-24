@@ -1,6 +1,4 @@
 import React from "react";
-import './style/Main.css'
-
 export function ActionButtons() {
     return (
       <div className="action-buttons">

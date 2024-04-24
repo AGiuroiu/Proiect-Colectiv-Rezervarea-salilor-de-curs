@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import "./Map.module.css";
-import { Loader } from "@googlemaps/js-api-loader"
+import styles from "./Map.module.css"; 
+import { ActionButtons } from "../ActionButtons";
+//import Datepicker from 'react-datepicker';
 
 function Map() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`; // Replace YOUR_API_KEY with your actual API key
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCi0LN_kGISt-pvUiJXOJ96zsdoU3Prepw&libraries=places`;
     script.async = true;
     script.defer = true;
     script.onload = initializeMap;
@@ -38,10 +39,12 @@ function Map() {
   return (
     <div
       id="map"
-      className="map"
-      style={{ width: "70%", height: "580px" }}
-    ></div>
-  );
+      className={styles.map} 
+      style={{ width: "65%", height: "400px" }}
+    >
+      <div className="Calendar"></div>
+    </div>
+    );
 }
 
 export default Map;
