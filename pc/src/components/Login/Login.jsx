@@ -3,7 +3,7 @@ import basestyle from "../Base.module.css";
 import loginstyle from "./Login.module.css";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
-import logo from "../logo.png";
+import logo from "../../images/logo.png";
 
 const Login = ({ setUserState }) => {
   const navigate = useNavigate();
@@ -46,7 +46,8 @@ const Login = ({ setUserState }) => {
     setIsSubmit(true);
 
     if (Object.keys(errors).length === 0) {
-      axios.post("http://localhost:8000/login", user)
+      axios
+        .post("http://localhost:8000/login", user)
         .then((res) => {
           alert(res.data.message);
           setUserState(res.data.user);

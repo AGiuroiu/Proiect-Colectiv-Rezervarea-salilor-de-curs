@@ -2,16 +2,12 @@ import React, { useEffect, useState } from "react";
 import basestyle from "../Base.module.css";
 import registerstyle from "./Register.module.css";
 import axios from "axios";
-import logo from "../logo.png";
-
-
+import logo from "../../images/logo.png";
 
 import { useNavigate, NavLink } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
-
-  
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -62,18 +58,18 @@ const Register = () => {
     return errors;
   };
 
-  
   const signupHandler = (e) => {
     e.preventDefault();
     const errors = validateForm(user);
     setFormErrors(errors);
     setIsSubmit(true);
-  
+
     if (Object.keys(errors).length === 0) {
-      axios.post("http://localhost:8000/signup/", user)
+      axios
+        .post("http://localhost:8000/signup/", user)
         .then((res) => {
           alert(res.data.message); // Display a success message (optional)
-          navigate("/login", { replace: true }); // Redirect to login page
+          navigate("/", { replace: true }); // Redirect to login page
         })
         .catch((error) => {
           console.error("Error registering user:", error);
@@ -87,7 +83,7 @@ const Register = () => {
       console.log(user);
       // Additional actions after successful form submission
     }
-  }, [formErrors, isSubmit, user]); 
+  }, [formErrors, isSubmit, user]);
 
   return (
     <>
@@ -144,7 +140,7 @@ const Register = () => {
             Register
           </button>
         </form>
-        <NavLink to="/login">Already registered? Login</NavLink>
+        <NavLink to="/">Already registered? Login</NavLink>
       </div>
     </>
   );
