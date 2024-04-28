@@ -1,10 +1,12 @@
-import "./Map.module.css";
 import React, { useEffect } from "react";
+import styles from "./Map.module.css"; 
+import { ActionButtons } from "../ActionButtons";
+//import Datepicker from 'react-datepicker';
 
 function Map() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD3pcEWmYaPqKLCEGeu8fuZ5fFvSVvWeC8&libraries=places`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCi0LN_kGISt-pvUiJXOJ96zsdoU3Prepw&libraries=places`;
     script.async = true;
     script.defer = true;
     script.onload = initializeMap;
@@ -21,20 +23,28 @@ function Map() {
       zoom: 14,
     });
 
-    const marker = new window.google.maps.Marker({
-      position: { lat: -34.397, lng: 150.644 },
+    // Add marker on map click
+    map.addListener("click", (event) => {
+      addMarker(event.latLng, map);
+    });
+  }
+
+  function addMarker(location, map) {
+    new window.google.maps.Marker({
+      position: location,
       map: map,
-      title: "Marker",
     });
   }
 
   return (
     <div
       id="map"
-      className="map"
-      style={{ width: "70%", height: "580px" }}
-    ></div>
-  );
+      className={styles.map} 
+      style={{ width: "65%", height: "400px" }}
+    >
+      <div className="Calendar"></div>
+    </div>
+    );
 }
 
 export default Map;
