@@ -1,28 +1,60 @@
-.map {
-  height: 80vh;
-  border-radius: 20px;
-  position: fixed;
-  left: 0; /* Align the map to the left side */
-}
-
-
-.action-buttons {
-  position: fixed;
-  bottom: 0;
+/* Map Container */
+.mapContainer {
+  position: relative;
+  height: calc(100vh - 250px);
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-  background-color: #393e46;
 }
 
-.search-btn,
-.filter-btn,
-.book-btn {
-  padding: 0.5rem 10rem;
-  margin: 0 0.5rem;
+.map {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  left: 18px;
+}
+
+/* Bara de căutare */
+.searchBar {
+  position: absolute; /* Poziționare absolută pentru a se potrivi pe harta */
+  top: 410px; /* Poziționare la 20px deasupra hărții */
+  left: 20px; /* Poziționare la 20px de la marginea stângă a paginii */
+}
+
+.searchInput {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.searchButton {
+  width: 100px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: #00adb5;
   color: white;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #007d7e;
+}
+
+.filterButtonContainer {
+  margin-top: 60px;
+  text-align: right;
+}
+
+.filterButton {
+  padding: 10px 20px;
+  background-color: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Ajustăm margin-left-ul */
+
+}
+
+.filterButton:hover {
+  background-color: #007d7e;
 }
