@@ -37,6 +37,18 @@ router.post('/signup', (req, res) => {
     });
   });
 });
+//route for rooms
+
+router.get('/rooms', (req, res) => {
+  pool.query('SELECT * FROM rooms', (error, results) => {
+    if (error) {
+      res.status(500).send('Error fetching rooms: ' + error);
+      return;
+    }
+    res.json(results);
+  });
+});
+
 
 // Route for user login
 router.post('/login', (req, res) => {
