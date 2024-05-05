@@ -1,22 +1,27 @@
-/* Map Container */
 .mapContainer {
-  position: relative;
-  height: calc(100vh - 250px);
+  display: flex;
+  height: 80vh;
   width: 100%;
+  position: relative;
 }
 
 .map {
-  height: 100%;
-  width: 100%;
+  flex: 3;
   border-radius: 20px;
-  left: 18px;
+  height: 100%;
 }
 
-/* Bara de căutare */
+/* Bara de cautare */
 .searchBar {
-  position: absolute; /* Poziționare absolută pentru a se potrivi pe harta */
-  top: 410px; /* Poziționare la 20px deasupra hărții */
-  left: 20px; /* Poziționare la 20px de la marginea stângă a paginii */
+  position: absolute; /* Pozi?ionare absoluta pentru a se potrivi pe harta */
+  top: 410px; /* Pozi?ionare la 20px deasupra har?ii */
+  left: 20px; /* Pozi?ionare la 20px de la marginea st�nga a paginii */
+}
+.roomList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #766c6c; /* Light grey background */
 }
 
 .searchInput {
@@ -24,6 +29,28 @@
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+.room {
+  background: linear-gradient(145deg, #5d27a3, #683c3c); /* Gradient effect for rooms */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adding some shadow for depth */
+  transition: background 0.3s ease;
+}
+
+.room:hover {
+  background: linear-gradient(145deg, #e6f0ff, #cce0ff); /* Light blue gradient on hover */
+}
+
+.action-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background-color: #393e46;
 }
 .searchButton {
   width: 100px;
@@ -51,7 +78,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 10px; /* Ajustăm margin-left-ul */
+  margin-left: 10px; /* Ajustam margin-left-ul */
 
 }
 
