@@ -9,7 +9,7 @@ const Navbar = () => {
         <img src={Logo} alt="Logo" className={styles.logo} /> 
       </div>}
       <div className={styles["nav-items"]}> 
-        <a href="/">Home</a>
+        <a href="/home">Home</a>
         <a href="/map">Map</a>
         <a href="/about-us">About Us</a>
         <a href="/profile">Profile</a>
