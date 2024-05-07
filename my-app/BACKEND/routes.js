@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('./db');
-const cors= require('cors');
-const app=express();
+const cors = require('cors');
 
-app.use(cors());
+router.use(cors());
+router.use(express.json()); // Add this line to parse JSON requests
 
 // Route for user registration
 router.post('/signup', (req, res) => {
-  const { fname, lname, email, password } = req.body; 
-
+  const { fname, lname, email, password } = req.body;
   
   pool.query('SELECT * FROM users WHERE Email = ?', [email], (error, results) => {
     if (error) {
@@ -24,21 +23,19 @@ router.post('/signup', (req, res) => {
       return;
     }
 
-    
     pool.query('INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?)', [fname + ' ' + lname, password, email], (error, results) => {
       if (error) {
         console.error('Error executing query:', error);
         res.status(500).json({ message: 'Internal server error' });
         return;
       }
-
       
       res.status(201).json({ message: 'User registered successfully' });
     });
   });
 });
-//route for rooms
 
+// Route for fetching rooms
 router.get('/rooms', (req, res) => {
   pool.query('SELECT * FROM rooms', (error, results) => {
     if (error) {
@@ -49,11 +46,24 @@ router.get('/rooms', (req, res) => {
   });
 });
 
+// Route for making reservations
+router.post('/reservations', (req, res) => {
+  const { userId, roomId, startTime, endTime, status, comments } = req.body;
+
+  pool.query('INSERT INTO reservations (UserID, RoomID, StartTime, EndTime, Status, Comments) VALUES (?, ?, ?, ?, ?, ?)', [userId, roomId, startTime, endTime, status, comments], (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ message: 'Internal server error' });
+      return;
+    }
+
+    res.status(201).json({ message: 'Reservation created successfully' });
+  });
+});
 
 // Route for user login
 router.post('/login', (req, res) => {
   const { email, password } = req.body; 
-
   
   pool.query('SELECT * FROM users WHERE Email = ? AND Password = ?', [email, password], (error, results) => {
     if (error) {
@@ -62,13 +72,11 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    
     if (results.length === 0) {
       res.status(401).json({ message: 'Invalid email or password' });
       return;
     }
 
-   
     res.status(200).json({ message: 'Login successful', user: results[0] });
   });
 });

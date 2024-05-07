@@ -1,43 +1,46 @@
-import "./App.css";
-import Profile from "./components/Profile/Profile";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
 import Map from "./components/Map/Map";
-import Navbar from "./components/Navbar/Navbar";
 import AboutUsPage from "./components/AboutUs/AboutUs";
+import Profile from "./components/Profile/Profile";
+import Navbar from "./components/Navbar/Navbar";
+import "./App.css";
 
 function App() {
-  const [userstate, setUserState] = useState({});
+  // Retrieve user state from local storage if it exists
+  const storedUserState = localStorage.getItem("userstate");
+  const [userstate, setUserState] = useState(
+    storedUserState ? JSON.parse(storedUserState) : null
+  );
 
-  if ((userstate && userstate._id)) {
-    return (
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login setUserState={setUserState} />} />
-            <Route path="/signup" element={<Register />} />
-          </Routes>
-        </Router>
-      </div>
-    );
-  }
+  // Update user state and store it in local storage
+  const updateUserState = (newUserState) => {
+    setUserState(newUserState);
+    localStorage.setItem("userstate", JSON.stringify(newUserState));
+  };
 
   return (
     <div className="App">
-      <Navbar />
       <Router>
+        {userstate && <Navbar userstate={userstate} />}
         <Routes>
+          {userstate && (
+            <>
+              <Route
+                path="/profile"
+                element={<Profile setUserState={updateUserState} />}
+              />
+              <Route path="/map" element={<Map />} />
+              <Route path="/about-us" element={<AboutUsPage />} />
+            </>
+          )}
           <Route
-            path="/profile"
-            element={
-              <Profile setUserState={setUserState} username={userstate.fname} />
-            }
-          ></Route>
-          <Route path="/map" element={<Map />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          
+            path="/"
+            element={<Login setUserState={updateUserState} />}
+          />
+          <Route path="/signup" element={<Register />} />
         </Routes>
       </Router>
     </div>

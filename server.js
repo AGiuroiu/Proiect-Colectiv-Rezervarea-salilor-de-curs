@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const routes = require("C:\\Users\\Administrator\\Documents\\GitHub\\Proiect-Colectiv\\my-app\\BACKEND\\routes.js"); // Importăm fișierul routes.js
+const routes = require("C:\\Users\\HP\\Documents\\GitHub\\Proiect-Colectiv\\my-app\\BACKEND\\routes.js"); // Importăm fișierul routes.js
 
 const app = express();
 
