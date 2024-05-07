@@ -15,7 +15,7 @@
 .searchBar {
   position: absolute; /* Pozi?ionare absoluta pentru a se potrivi pe harta */
   top: 410px; /* Pozi?ionare la 20px deasupra har?ii */
-  left: 20px; /* Pozi?ionare la 20px de la marginea stânga a paginii */
+  left: 20px; /* Pozi?ionare la 20px de la marginea stï¿½nga a paginii */
 }
 .roomList {
   flex: 1;
@@ -29,6 +29,7 @@
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
 .room {
   background: linear-gradient(145deg, #5d27a3, #683c3c); /* Gradient effect for rooms */
   margin: 10px 0;
