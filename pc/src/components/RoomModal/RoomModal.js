@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import styles from "./RoomModal.module.css";
 
-function RoomModal({ room, onClose }) {
+function RoomModal({ room, onClose, authUserId }) {
   const [reservationData, setReservationData] = useState({
-    userId: "1", // Add logic to get the user ID
+    userId: authUserId,
     roomId: room.RoomID,
     startTime: "", // Add logic to select start time
     endTime: "", // Add logic to select end time
     status: "confirmat", // Assuming it's confirmed by default
-    comments: ""
+    comments: "",
+    email: "", // Remove default value for email field
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setReservationData(prevData => ({
+    setReservationData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -25,9 +26,9 @@ function RoomModal({ room, onClose }) {
       const response = await fetch("http://localhost:8000/reservations", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(reservationData)
+        body: JSON.stringify(reservationData),
       });
 
       if (response.ok) {
@@ -59,19 +60,51 @@ function RoomModal({ room, onClose }) {
         <p>Projector: {room.Projector ? "Yes" : "No"}</p>
         <p>Other Options: {room.OtherOptions}</p>
         <form onSubmit={handleSubmit}>
-          <label>
-            Start Time:
-            <input type="datetime-local" name="startTime" value={reservationData.startTime} onChange={handleChange} required />
-          </label>
-          <label>
-            End Time:
-            <input type="datetime-local" name="endTime" value={reservationData.endTime} onChange={handleChange} required />
-          </label>
-          <label>
-            Comments:
-            <textarea name="comments" value={reservationData.comments} onChange={handleChange}></textarea>
-          </label>
-          <button type="submit" className={styles.bookButton}>Book</button>
+          <div className={styles.inputContainer}>
+            <label>
+              Start Time:
+              <input
+                type="datetime-local"
+                name="startTime"
+                value={reservationData.startTime}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              End Time:
+              <input
+                type="datetime-local"
+                name="endTime"
+                value={reservationData.endTime}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+          <div className={styles.inputContainer}>
+            <label>
+              Comments:
+              <textarea
+                name="comments"
+                value={reservationData.comments}
+                onChange={handleChange}
+              ></textarea>
+            </label>
+            <label>
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={reservationData.email}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+          <button type="submit" className={styles.bookButton}>
+            Book
+          </button>
         </form>
       </div>
     </div>

@@ -48,9 +48,9 @@ router.get('/rooms', (req, res) => {
 
 // Route for making reservations
 router.post('/reservations', (req, res) => {
-  const { userId, roomId, startTime, endTime, status, comments } = req.body;
-
-  pool.query('INSERT INTO reservations (UserID, RoomID, StartTime, EndTime, Status, Comments) VALUES (?, ?, ?, ?, ?, ?)', [userId, roomId, startTime, endTime, status, comments], (error, results) => {
+  const { userId, roomId, startTime, endTime, status, comments, email } = req.body;
+  
+  pool.query('INSERT INTO reservations (UserID, RoomID, StartTime, EndTime, Status, Comments, Email) VALUES (?, ?, ?, ?, ?, ?, ?)', [userId, roomId, startTime, endTime, status, comments, email], (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ message: 'Internal server error' });
@@ -65,7 +65,7 @@ router.post('/reservations', (req, res) => {
 router.post('/login', (req, res) => {
   const { email, password } = req.body; 
   
-  pool.query('SELECT * FROM users WHERE Email = ? AND Password = ?', [email, password], (error, results) => {
+  pool.query('SELECT UserID, Username, Email FROM users WHERE Email = ? AND Password = ?', [email, password], (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ message: 'Internal server error' });
@@ -78,6 +78,20 @@ router.post('/login', (req, res) => {
     }
 
     res.status(200).json({ message: 'Login successful', user: results[0] });
+  });
+});
+
+// Route for fetching reservations for a specific user
+router.get('/reservations/:email', (req, res) => {
+  const userEmail = req.params.email;
+  
+  pool.query('SELECT * FROM reservations WHERE Email = ?', [userEmail], (error, results) => {
+    if (error) {
+      console.error('Error fetching reservations:', error);
+      res.status(500).json({ message: 'Internal server error' });
+      return;
+    }
+    res.status(200).json(results); // Return the reservations
   });
 });
 

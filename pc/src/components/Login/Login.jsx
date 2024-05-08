@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import basestyle from "../Base.module.css";
 import loginstyle from "./Login.module.css";
 import axios from "axios";
@@ -44,13 +44,15 @@ const Login = ({ setUserState }) => {
     const errors = validateForm(user);
     setFormErrors(errors);
     setIsSubmit(true);
-
+  
     if (Object.keys(errors).length === 0) {
       axios
         .post("http://localhost:8000/login", user)
         .then((res) => {
-          alert(res.data.message);
-          setUserState(res.data.user);
+          const userData = res.data.user;
+          // Store user ID in local storage
+          localStorage.setItem("userId", userData.UserID);
+          setUserState(userData);
           navigate("/map", { replace: true });
         })
         .catch((error) => {
@@ -59,12 +61,6 @@ const Login = ({ setUserState }) => {
         });
     }
   };
-
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(user);
-    }
-  }, [formErrors, isSubmit, user]);
 
   return (
     <div className={loginstyle.login}>

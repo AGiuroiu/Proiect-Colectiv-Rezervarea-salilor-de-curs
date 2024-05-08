@@ -1,9 +1,9 @@
 .mapContainer {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+ 
   width: 100%;
-  position: relative;
+  padding-top: 8%;
 }
 
 .mapAndRoomListContainer {
@@ -30,7 +30,7 @@
 }
 
 .room {
-  background: linear-gradient(145deg, #37047a, #c0b7b7);
+  background: linear-gradient(145deg, #f5f4f7, #c0b7b7);
   margin: 10px 0;
   padding: 10px;
   border-radius: 8px;

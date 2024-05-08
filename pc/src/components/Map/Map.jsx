@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./Map.module.css";
 import Modal from "../RoomModal/RoomModal.js"; // Import the Modal component
 
-function Map() {
+function Map({ userEmail }) {
   const [rooms, setRooms] = useState([]);
   const [filterOption, setFilterOption] = useState("name"); // Default filter option
   const [selectedRoom, setSelectedRoom] = useState(null); // State for selected room
@@ -149,7 +149,7 @@ function Map() {
       </div>
       {/* Render modal conditionally */}
       {showModal && selectedRoom && (
-        <Modal room={selectedRoom} onClose={handleCloseModal} />
+        <Modal room={selectedRoom} onClose={handleCloseModal} userEmail={userEmail} />
       )}
     </div>
   );
