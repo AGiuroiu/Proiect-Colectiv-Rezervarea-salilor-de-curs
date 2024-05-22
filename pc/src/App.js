@@ -6,6 +6,7 @@ import Map from "./components/Map/Map";
 import AboutUsPage from "./components/AboutUs/AboutUs";
 import Profile from "./components/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
 import "./App.css";
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
               />
               <Route path="/map" element={<Map />} />
               <Route path="/about-us" element={<AboutUsPage />} />
+              <Route path="/home" element={<Home />} />
+
             </>
           )}
           <Route
@@ -41,6 +44,7 @@ function App() {
             element={<Login setUserState={updateUserState} />}
           />
           <Route path="/signup" element={<Register />} />
+
         </Routes>
       </Router>
     </div>

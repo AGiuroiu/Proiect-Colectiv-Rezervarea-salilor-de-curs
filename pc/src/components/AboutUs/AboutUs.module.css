@@ -1,8 +1,7 @@
-
-
 .about-us-container {
-  max-width: 800px;
-  margin: 0 auto;
+  position:static;
+  max-width: 50%;
+  margin: 50px auto;
   padding: 20px;
   text-align: center;
 }
@@ -16,4 +15,11 @@
   font-size: 1.2rem;
   line-height: 1.6;
   color: rgb(228, 213, 213);
+}
+
+.logo {
+  max-width: 40%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
