@@ -1,0 +1,34 @@
+.Home {
+    text-align: center;
+    font-size: 2.5rem;
+    color: rgb(35, 171, 224);
+    padding-top: 10%;
+    nav-up: auto;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 100px;
+  }
+  
+  .button {
+    margin-right: 100px;
+    background-color: #00adb5;
+  }
+  
+  .buttonContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mapImage {
+    width: 300px; /* Ajustați dimensiunile imaginii după preferințe */
+    height: 300px;
+  }
+  
+  span {
+    margin-top: 5px; /* Adaugăm un mic spațiu între text și imagine */
+  }
