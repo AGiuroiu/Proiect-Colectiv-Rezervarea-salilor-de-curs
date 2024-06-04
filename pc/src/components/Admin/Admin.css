@@ -1,0 +1,55 @@
+.adminContainer {
+    max-width: 800px; /* Lățimea maximă a containerului pentru a ocupa două coloane */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Utilizăm flexbox pentru a plasa inputurile pe două coloane */
+    flex-wrap: wrap; /* Permite inputurilor să meargă pe mai multe linii */
+    gap: 20px; /* Spațiu între inputuri */
+  }
+  
+  .inputContainer {
+    margin-bottom: 15px;
+    width: calc(50% - 10px); /* Lățimea fiecărui input este de 50% din lățimea containerului și se adaugă spațiu între ele */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
+  }
+  
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="#00ADB5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #00ADB5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #007d80;
+  }
