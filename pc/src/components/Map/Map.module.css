@@ -1,14 +1,19 @@
 .mapContainer {
   display: flex;
+  flex-direction: column;
   height: 80vh;
   width: 100%;
   position: relative;
 }
 
+.mapAndRoomListContainer {
+  display: flex;
+  flex: 1;
+}
+
 .map {
   flex: 3;
   border-radius: 20px;
-  height: 100%;
 }
 
 /* Bara de cautare */
@@ -21,7 +26,13 @@
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background-color: #766c6c; /* Light grey background */
+  background-color: #3f81c4;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.roomList h2 {
+  margin-top: 0;
 }
 
 .searchInput {
@@ -31,58 +42,49 @@
   border: 1px solid #ccc;
 }
 .room {
-  background: linear-gradient(145deg, #5d27a3, #683c3c); /* Gradient effect for rooms */
+  background: linear-gradient(145deg, #37047a, #c0b7b7);
   margin: 10px 0;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adding some shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease;
 }
 
 .room:hover {
-  background: linear-gradient(145deg, #e6f0ff, #cce0ff); /* Light blue gradient on hover */
+  background: linear-gradient(145deg, #e6f0ff, #cce0ff);
 }
 
-.action-buttons {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.searchAndFilterContainer {
   display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-  background-color: #393e46;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
-.searchButton {
-  width: 100px;
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.searchContainer input {
+  width: 250px;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #00adb5;
-  color: white;
-  cursor: pointer;
+  font-size: 16px;
 }
 
-.searchButton:hover {
-  background-color: #007d7e;
-}
-
-.filterButtonContainer {
-  margin-top: 60px;
-  text-align: right;
-}
-
-.filterButton {
+.searchContainer button {
   padding: 10px 20px;
-  background-color: #00adb5;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px; /* Ajustam margin-left-ul */
-
+  font-size: 16px;
+  margin-right: 20px; /* Add margin to the right side */
 }
 
-.filterButton:hover {
-  background-color: #007d7e;
+.filterContainer {
+  margin-left: 0; /* Reset margin to align with the search container */
 }
+
+.filterContainer select {
+  padding: 15px 25px; /* Increased padding for the button */
+  font-size: 16px;
+}
+

@@ -51,7 +51,7 @@ const Login = ({ setUserState }) => {
         .then((res) => {
           alert(res.data.message);
           setUserState(res.data.user);
-          navigate("/", { replace: true });
+          navigate("/map", { replace: true });
         })
         .catch((error) => {
           console.error("Error logging in:", error);
