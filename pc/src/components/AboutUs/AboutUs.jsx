@@ -2,9 +2,9 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./AboutUs.module.css";
-import Logo0 from "../../images/medi.jpg";
-import Logo1 from "../../images/logoUvt.jpg";
-import Logo2 from "../../images/logoUpt.jpg";
+import Logo0 from "../../images/medi.png";
+import Logo1 from "../../images/logoUvt.png";
+import Logo2 from "../../images/logoUpt.png";
 
 const AboutUsPage = () => {
   return (
@@ -27,7 +27,6 @@ const AboutUsPage = () => {
       <p className={styles["paragraph"]}>Our platform offers you the convenience of booking classrooms from various universities in a simple and efficient manner. </p>
       <p className={styles["paragraph"]}>Through our service, we aim to provide you with a seamless experience, allowing you to identify and reserve classrooms that suit your needs. Regardless of the university you choose, we are here to facilitate your access to the necessary facilities for conducting your educational activities in an organized and hassle-free manner </p>
 
-    </div>
     </div>
   );
 };

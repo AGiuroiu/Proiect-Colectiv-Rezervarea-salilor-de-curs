@@ -1,0 +1,38 @@
+.profileContainer {
+    color: white;
+    padding: 20px;
+  }
+  
+  .userInfo {
+    margin-bottom: 20px;
+  }
+  
+  .reservationsContainer {
+    margin-top: 20px;
+  }
+  
+  .reservationsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .gridHeader {
+    display: contents;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .gridRow {
+    display: contents;
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .gridRow:nth-child(even) {
+    background-color: #292929;
+  }
+  

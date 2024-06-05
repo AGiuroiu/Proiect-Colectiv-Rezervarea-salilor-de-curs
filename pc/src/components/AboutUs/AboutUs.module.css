@@ -1,6 +1,6 @@
 .about-us-container {
-  box-sizing: border-box;
-  max-width: 800px; /* Adjust the max-width to your preference */
+  position:static;
+  max-width: 50%;
   margin: 50px auto;
   padding: 20px;
   text-align: center;
@@ -20,7 +20,7 @@
 }
 
 .logo {
-  max-width: 60%;
+  max-width: 40%;
   height: auto;
   display: block;
   margin: 0 auto;
