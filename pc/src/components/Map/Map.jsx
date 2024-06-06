@@ -14,6 +14,7 @@ function Map() {
   const searchInputRef = useRef(null); // Reference for the search input field
 
   useEffect(() => {
+    loadMapScript();
     fetchRooms();
   }, []);
 
@@ -24,7 +25,7 @@ function Map() {
     script.defer = true;
     window.initMap = initializeMap;
     document.head.appendChild(script);
-    };
+  };
 
   const initializeMap = () => {
     mapRef.current = new window.google.maps.Map(mapContainerRef.current, {
@@ -63,24 +64,14 @@ function Map() {
       map: mapRef.current,
     });
 
-        marker.addListener("click", () => {
-          handleRoomClick(room); // Pass room data to the click handler
-        });
+    marker.addListener("click", () => {
+      handleRoomClick(location); // Pass room data to the click handler
+    });
 
-    if (location) {
-      const geocoder = new window.google.maps.Geocoder();
-      geocoder.geocode({ address: location }, (results, status) => {
-        if (status === "OK" && results[0]) {
-          mapRef.current.setCenter(results[0].geometry.location);
-          addMarker(results[0].geometry.location);
-        } else {
-          alert("Location not found");
-        }
-      });
-    }
-  }, [rooms]); // Depend on rooms
+    markersRef.current.push(marker); // Store the marker
+  };
 
-  const handleSearch = () => {
+  const searchLocation = () => {
     const input = searchInputRef.current.value;
 
     // Use Google Maps Places Autocomplete API to search for locations
@@ -96,6 +87,7 @@ function Map() {
           if (status === window.google.maps.GeocoderStatus.OK && results[0]) {
             const location = results[0].geometry.location;
             mapRef.current.setCenter(location);
+            addMarker(location);
           } else {
             console.error("Geocode was not successful for the following reason: " + status);
           }
@@ -151,8 +143,8 @@ function Map() {
       </div>
       <div className={styles.searchAndFilterContainer}>
         <div className={styles.searchContainer}>
-          <input ref={searchInputRef} type="text" placeholder="Search location..." />
-          <button onClick={handleSearch}>Search</button>
+          <input ref={searchInputRef} type="text" placeholder="Search location..." id="searchInput" />
+          <button onClick={searchLocation}>Search</button>
         </div>
         <div className={styles.filterContainer}>
           <select value={filterOption} onChange={handleFilterChange}>
