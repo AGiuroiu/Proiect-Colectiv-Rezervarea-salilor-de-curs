@@ -90,7 +90,10 @@ router.post('/verify-email', (req, res) => {
 
 // Middleware to check if the user is admin
 const isAdmin = (req, res, next) => {
-  const userRole = req.user?.role;
+  // const userRole = req.user?.role;
+  const userRole = req?.body?.role;
+  console.log("FROM isAdmin:", req);
+  console.log("check userRole:", req?.body.role);
   if (userRole !== 'admin') {
     return res.status(403).json({ message: 'Access denied. Admins only.' });
   }
@@ -114,7 +117,6 @@ router.get('/users/:userId/role', (req, res) => {
 // Route to add new rooms (admin only)
 router.post('/rooms', isAdmin, (req, res) => {
   const { userId, name, capacity, type, latitude, longitude } = req.body;
-
   if (!userId || !name || !capacity || !type || !latitude || !longitude) {
     return res.status(400).json({ message: 'All fields are required' });
   }

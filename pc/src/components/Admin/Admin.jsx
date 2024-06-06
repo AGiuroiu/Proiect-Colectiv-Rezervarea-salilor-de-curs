@@ -43,7 +43,7 @@ function Admin({ onAddRoom }) {
         throw new Error("User ID is required to add a room.");
       }
 
-      const roomDataWithUser = { ...roomData, userRole, userId };
+      const roomDataWithUser = { ...roomData, role: userRole, userId }; //EDIT
 
       if (typeof onAddRoom === 'function') {
         onAddRoom(roomDataWithUser);
