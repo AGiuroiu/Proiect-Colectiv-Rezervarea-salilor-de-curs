@@ -103,7 +103,7 @@ const isAdmin = (req, res, next) => {
 // Route to get user role by userID
 router.get('/users/:userId/role', (req, res) => {
   const { userId } = req.params;
-  req.pool.query('SELECT Role FROM users WHERE UserID = ?', [userId], (error, results) => {
+  pool.query('SELECT Role FROM users WHERE UserID = ?', [userId], (error, results) => {
     if (error) {
       return res.status(500).json({ message: 'Internal server error', error });
     }
@@ -116,18 +116,24 @@ router.get('/users/:userId/role', (req, res) => {
 
 // Route to add new rooms (admin only)
 router.post('/rooms', isAdmin, (req, res) => {
-  const { userId, name, capacity, type, latitude, longitude } = req.body;
-  if (!userId || !name || !capacity || !type || !latitude || !longitude) {
+  const { name, capacity, type, location, floor, projector, otherOptions, latitude, longitude } = req.body;
+
+  if (!name || !capacity || !type || !location || !floor || !projector || !latitude || !longitude) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
-  req.pool.query('INSERT INTO rooms (RoomName, Capacity, Type, Latitude, Longitude) VALUES (?, ?, ?, ?, ?)', 
-    [name, capacity, type, latitude, longitude], 
-    (error, results) => {
-      if (error) {
-        return res.status(500).json({ message: 'Internal server error', error });
-      }
-      res.status(201).json({ message: 'Room added successfully' });
+  const query = `
+    INSERT INTO rooms (RoomName, Capacity, Type, Location, Floor, Projector, OtherOptions, latitude, longitude) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  const values = [name, capacity, type, location, floor, projector, otherOptions, latitude, longitude];
+
+  pool.query(query, values, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      return res.status(500).json({ message: 'Internal server error', error });
+    }
+    res.status(201).json({ message: 'Room added successfully' });
   });
 });
 
