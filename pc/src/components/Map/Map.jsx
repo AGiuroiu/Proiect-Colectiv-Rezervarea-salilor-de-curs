@@ -14,7 +14,7 @@ function Map() {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCi0LN_kGISt-pvUiJXOJ96zsdoU3Prepw&libraries=places&callback=initMap`;
+    script.src = `UR API`;
     script.async = true;
     script.defer = true;
     window.initMap = initializeMap;
